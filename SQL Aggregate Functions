@@ -1,0 +1,99 @@
+Performing Data Aggregation using SQL Aggregate Functions
+Aggregate Functions Overview:
+
+SQL provides several built-in functions to perform calculations on data:
+
+### 1. **COUNT()**
+Counts the number of rows in a table or group.
+```sql
+SELECT COUNT(*) 
+FROM table_name;
+2. SUM()
+Calculates the total of a numeric column.
+
+SELECT SUM(column_name) 
+FROM table_name;
+
+3. AVG()
+Finds the average value of a numeric column.
+sql 
+SELECT AVG(column_name) 
+FROM table_name;
+
+4. MAX()
+Finds the maximum value in a column.
+sql
+SELECT MAX(column_name) 
+FROM table_name;
+
+
+5. MIN()
+Finds the minimum value in a column.
+sql
+SELECT MIN(column_name) 
+FROM table_name;
+Examples of Data Aggregation
+Example 1: Counting Rows
+Count the number of employees in a table:
+sql
+SELECT COUNT(*) AS total_employees 
+FROM employees;
+
+Example 2: Calculating Total Sales
+Calculate the total sales from an orders table:
+sql
+SELECT SUM(order_amount) AS total_sales 
+FROM orders;
+
+Example 3: Finding Average Salary
+Find the average salary of employees in a department:
+sql
+SELECT AVG(salary) AS average_salary 
+FROM employees 
+WHERE department = 'IT';
+
+Example 4: Identifying Extremes
+Maximum purchase amount:
+sql
+SELECT MAX(purchase_amount) AS highest_purchase 
+FROM purchases;
+Minimum age of customers:
+sql
+SELECT MIN(age) AS youngest_customer 
+FROM customers;
+Grouping Data with GROUP BY
+To perform aggregation on groups of rows, use the GROUP BY clause.
+
+Example 1: Total Sales by Category
+sql
+Copy code
+SELECT category, SUM(sales) AS total_sales 
+FROM products 
+GROUP BY category;
+Example 2: Average Age by Gender
+sql
+SELECT gender, AVG(age) AS average_age 
+FROM customers 
+GROUP BY gender;
+Filtering Aggregated Data with HAVING
+The HAVING clause filters groups after aggregation.
+
+Example 1: Categories with Total Sales Over 10,000
+sql
+SELECT category, SUM(sales) AS total_sales 
+FROM products 
+GROUP BY category 
+HAVING SUM(sales) > 10000;
+Example 2: Departments with More Than 5 Employees
+sql
+SELECT department, COUNT(*) AS employee_count 
+FROM employees 
+GROUP BY department 
+HAVING COUNT(*) > 5;
+
+
+Use Cases of Data Aggregation
+Sales Analysis: Calculate total revenue, average sales, and trends by region.
+Employee Statistics: Find the highest-paid employees, average salary, and staff distribution by department.
+Customer Insights: Identify top-spending customers, average order value, and demographic patterns.
+This repository includes examples and sample queries demonstrating SQL aggregation techniques. Explore the examples to understand how these functions can be applied to real-world datasets!
